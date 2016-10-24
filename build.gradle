@@ -1,0 +1,42 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.1.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+// spock dependency
+apply plugin: 'groovy'
+
+jar {
+	baseName = 'demo'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+
+	// spock dependency
+	dependencies {
+		testCompile group: 'org.spockframework', name: 'spock-core', version: '1.0-groovy-2.4'
+		testCompile group: 'cglib', name: 'cglib-nodep', version: '3.2.4' // Class Mocking 할 때 필요. Java 8은 3.x 필수
+
+		compile 'org.codehaus.groovy:groovy-all:2.4.7'
+	}
+}
