@@ -69,17 +69,17 @@ class HelperMethodSpecification extends Specification {
     }
 
     def "Behavior test using with block"() {
-        given:
+        given: "Mocking Subscriber"
         def subscriber1 = Mock(Subscriber)
 
         def publisher = new Publisher()
 
         publisher.add(subscriber1)
 
-        when:
+        when: "publisher fire the event"
         publisher.fire("event")
 
-        then:
+        then: "registered subcriber receives the event from publisher"
         with(subscriber1) {
             1 * receive("event")
         }

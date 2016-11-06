@@ -38,5 +38,6 @@ dependencies {
 		testCompile group: 'cglib', name: 'cglib-nodep', version: '3.2.4' // Class Mocking 할 때 필요. Java 8은 3.x 필수
 
 		compile 'org.codehaus.groovy:groovy-all:2.4.7'
+		testRuntime "com.h2database:h2:1.4.182"
 	}
 }
